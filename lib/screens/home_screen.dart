@@ -108,6 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    _customList('images/one.jpg', 'red')
                   ],
                 ),
               ),
@@ -116,5 +120,31 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Widget _customList(image, tag) {
+    return Hero(
+        tag: tag,
+        child: GestureDetector(
+          child: Container(
+            height: 250,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                )),
+            child: Column(
+              children: [
+                Text(
+                  'Sneakers',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
