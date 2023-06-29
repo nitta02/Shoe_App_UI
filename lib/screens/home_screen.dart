@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_app_ui/screens/shoes_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: Colors.transparent,
         leading: null,
         title: const Text(
           "Shoes",
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           padding: const EdgeInsets.all(20),
           child: Column(
-            children: <Widget>[
+            children: [
               Container(
                 height: 40,
                 child: ListView(
@@ -108,13 +110,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    _customList('images/one.jpg', 'red')
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 25,
+              ),
+              _customList('images/one.jpg', 'red', context),
+              const SizedBox(
+                height: 20,
+              ),
+              _customList('images/two.jpg', 'blue', context),
+              const SizedBox(
+                height: 20,
+              ),
+              _customList('images/three.jpg', 'grey', context),
             ],
           ),
         ),
@@ -122,24 +132,90 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _customList(image, tag) {
+  Widget _customList(image, tag, context) {
     return Hero(
         tag: tag,
         child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShoesDetails(
+                    image: image,
+                  ),
+                ));
+          },
           child: Container(
-            height: 250,
+            padding: const EdgeInsets.only(left: 10, top: 5, right: 10),
+            height: 220,
             width: double.infinity,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(20.0),
                 image: DecorationImage(
+                  fit: BoxFit.fill,
                   image: AssetImage(image),
-                )),
+                ),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(5, 10),
+                    blurRadius: 10.0,
+                  )
+                ]),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Sneakers',
-                  style: TextStyle(
-                    color: Colors.white,
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Sneakers',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 28,
+                              letterSpacing: 1.8,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Nikee',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                              letterSpacing: 1.8,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 35,
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.favorite_border),
+                    )
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    '1000TK ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
