@@ -98,6 +98,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "simple_animations",
+      "rootUri": "file:///C:/Users/nitto/AppData/Local/Pub/Cache/hosted/pub.dev/simple_animations-5.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/Flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -152,7 +158,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-29T13:29:41.794850Z",
+  "generated": "2023-06-30T04:47:31.700629Z",
   "generator": "pub",
   "generatorVersion": "3.0.1"
 }
